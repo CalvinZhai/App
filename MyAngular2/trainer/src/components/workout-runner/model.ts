@@ -48,3 +48,4 @@ export class ExerciseChangedEvent {
         public next: ExercisePlan
     ) { }
 }
+

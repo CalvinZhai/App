@@ -1,18 +1,39 @@
-import { Component, ViewChild, Inject, forwardRef } from '@angular/core';
+import { Component, ViewChild, Inject, forwardRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { MyAudioDirective } from './my-audio.directive'
 import { WorkoutPlan, ExercisePlan, ExerciseProgressEvent, ExerciseChangedEvent } from '../model';
+
+//import { WorkoutRunnerComponent } from '../workout-runner.component';     // child depends on parent awfully!!
 
 @Component({
     selector: 'workout-audio',
     templateUrl: '/src/components/workout-runner/workout-audio/workout-audio.html'
 })
-export class WorkoutAudioComponent {
+export class WorkoutAudioComponent {            // implements AfterViewInit, OnDestroy
     @ViewChild('ticks') private ticks: MyAudioDirective;
     @ViewChild('nextUp') private nextUp: MyAudioDirective;
     @ViewChild('nextUpExercise') private nextUpExercise: MyAudioDirective;
     @ViewChild('halfway') private halfway: MyAudioDirective;
     @ViewChild('aboutToComplete') private aboutToComplete: MyAudioDirective;
     private nextupSound: string;
+
+    //private subscriptions: Array<any>;
+    //constructor( @Inject(forwardRef(() => WorkoutRunnerComponent)) private runner: WorkoutRunnerComponent) {
+    //    this.subscriptions = [
+    //        this.runner.exercisePaused.subscribe((exercise: ExercisePlan) => this.stop()),
+    //        this.runner.workoutComplete.subscribe((exercise: ExercisePlan) => this.stop()),
+    //        this.runner.exerciseResumed.subscribe((exercise: ExercisePlan) => this.resume()),
+    //        this.runner.exerciseProgress.subscribe((progress: ExerciseProgressEvent) => this.onExerciseProgress(progress)),
+    //        this.runner.exerciseChanged.subscribe((state: ExerciseChangedEvent) => this.onExerciseChanged(state))
+    //    ];
+    //}
+
+    //ngAfterViewInit() {
+    //    this.ticks.start();
+    //}
+
+    //ngOnDestroy() {
+    //    this.subscriptions.forEach((s) => s.unsubscribe());
+    //}
 
     stop() {
         this.ticks.stop();

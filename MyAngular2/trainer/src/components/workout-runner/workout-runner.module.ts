@@ -9,6 +9,7 @@ import { SecondsToTimePipe } from './second-to-times.pipe';
 
 import { WorkoutAudioComponent } from './workout-audio/workout-audio.component';
 import { MyAudioDirective } from './workout-audio/my-audio.directive';
+import { WorkoutContainerCompnent } from './workout-container/workout-container.component';
 
 @NgModule({
   imports:      [BrowserModule],
@@ -17,10 +18,11 @@ import { MyAudioDirective } from './workout-audio/my-audio.directive';
       VideoPlayerComponent, VideoDialogComponent,
       SecondsToTimePipe,
       MyAudioDirective,
-      WorkoutAudioComponent
+      WorkoutAudioComponent,
+      WorkoutContainerCompnent
   ],
   entryComponents: [VideoDialogComponent], 
   // without exports, we cannot use WorkoutRunnerComponent outside WorkoutRunnerModule
-  exports: [WorkoutRunnerComponent]     
+  exports: [WorkoutContainerCompnent]     
 })
 export class WorkoutRunnerModule { }
